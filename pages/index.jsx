@@ -1,28 +1,18 @@
 import styles from "../styles/Home.module.css";
 import InstructionsComponent from "../components/InstructionsComponent";
-import { GraphQLClient } from "graphql";
-const client = new GraphQLClient("https://polaris-platform.saleor.cloud/graphql/");
+import GreenButton from '../components/GreenButton';
 
-const query = `
-query {
-  products {
-    id
-    name
-    image
-    description
+
+  export default function HomePage() {
+    return (
+      <div>
+        {/* other content */}
+        <GreenButton onClick={() => alert('Clicked!')}>
+          Click me
+        </GreenButton>
+      </div>
+    );
   }
-}`;
-const response = await client.query(query);
-const products = response.data.products;
-<ul>
-  {products.map((product) => (
-    <li key={product.id}>
-      <h2>{product.name}</h2>
-      <img src={product.image} />
-      <p>{product.description}</p>
-    </li>
-  ))}
-</ul>
 
 
 export default function Home() {
@@ -33,4 +23,6 @@ export default function Home() {
       </main>
     </div>
   );
+
+
 }
